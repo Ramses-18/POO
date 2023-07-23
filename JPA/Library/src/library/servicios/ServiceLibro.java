@@ -156,31 +156,25 @@ public class ServiceLibro extends DAOLibro {
                 System.out.println("6 - EDITAR AUTOR");
                 System.out.println("7 - SALIR");
                 opt = sc.nextInt();
+                System.out.println("ISBN A EDITAR");
+                l.setId(sc.nextLong());
                 switch (opt) {
                     case 1:
-                        System.out.println("ISBN A EDITAR");
-                        l.setId(sc.nextLong());
                         System.out.println("INGRESE EL NUEVO TITULO");
                         l.setTitulo(sc.next());
                         editeLibro(l, 1);
                         break;
                     case 2:
-                        System.out.println("ISBN A EDITAR");
-                        l.setId(sc.nextLong());
                         System.out.println("INGRESE EL NUEVO AÑO");
                         l.setAnio(sc.nextInt());
                         editeLibro(l, 2);
                         break;
                     case 3:
-                        System.out.println("ISBN A EDITAR");
-                        l.setId(sc.nextLong());
                         System.out.println("INGRESE NUEVA CANTIDAD DE EJEMPLARES");
                         l.setEjemplares(sc.nextInt());
                         editeLibro(l, 3);
                         break;
                     case 4:
-                        System.out.println("ISBN A EDITAR");
-                        l.setId(sc.nextLong());
                         System.out.println("INGRESE LOS LIBROS PRESTADOS");
                         l.setEjemplaresPrestados(sc.nextInt());
                         editeLibro(l, 4);

@@ -193,4 +193,21 @@ public class DAOLibro extends DAO {
         }
     }
     
+     public boolean buscarLibroPorId(Libro l) {
+        try {
+            conectar();
+            String query = "SELECT l FROM Libro l WHERE l.id LIKE :id";
+            List<Libro> x =  em.createQuery(query).setParameter("id", l.getId()).getResultList();
+            if (x.isEmpty()) {
+                System.out.println("El Libro no se encuentra en la base de datos");
+                return false;
+            } else {
+                System.out.println(x.toString());
+                return true;
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+    
 }
