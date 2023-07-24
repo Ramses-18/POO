@@ -288,7 +288,7 @@ public class ServiceLibro extends DAOLibro {
             l = new Libro();
             System.out.println("INGRESE EL ISBN");
             l.setId(sc.nextLong());
-            buscarEditorialPorId(l);
+            buscarLibroPorId(l);
         } catch (Exception e) {
             throw e;
         }

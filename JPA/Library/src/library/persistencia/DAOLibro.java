@@ -178,20 +178,6 @@ public class DAOLibro extends DAO {
         }
     }
     
-    public void buscarEditorialPorId(Libro l) {
-        try {
-            conectar();
-            String query = "SELECT l FROM Libro l WHERE l.isbn LIKE :id";
-            List<Libro> x = em.createQuery(query).setParameter("id", l.getId()).getResultList();
-            if (x == null) {
-                System.out.println("El Libro no se encuentra en la base de datos");
-            } else {
-                System.out.println(x.toString());
-            }
-        } catch (Exception ex) {
-            throw ex;
-        }
-    }
     
      public boolean buscarLibroPorId(Libro l) {
         try {
