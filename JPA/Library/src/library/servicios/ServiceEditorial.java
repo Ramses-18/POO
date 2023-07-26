@@ -91,7 +91,7 @@ public class ServiceEditorial extends DAOEditorial {
         try {
             List<Editorial> ed = listarEditorial();
             if (ed == null) {
-                System.out.println("NO SE HA INGRESADO NINGUNA EDITORIAL");
+                System.out.println("No se ha ingresado Ninguna Editotial a la Base De Datos");
                 return false;
             } else {
                 for (Editorial aux : ed) {
@@ -107,7 +107,7 @@ public class ServiceEditorial extends DAOEditorial {
     public void searchByNameEditorial(){
         try {
             ed = new Editorial();
-            System.out.println("INGRESE EL NOMBRE");
+            System.out.println("Ingrese el Nombre de la Editorial");
             ed.setNombre(sc.next());
             buscarEditorialPorNombre(ed);
         } catch (Exception e) {
@@ -118,7 +118,7 @@ public class ServiceEditorial extends DAOEditorial {
     public void searchByIdEditorial(){
         try {
             ed = new Editorial();
-            System.out.println("INGRESE EL ID_AUTOR");
+            System.out.println("Ingrese el Id del Autor");
             ed.setId(sc.nextLong());
             buscarEditorialPorId(ed);
         } catch (Exception e) {

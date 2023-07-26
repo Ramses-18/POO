@@ -89,7 +89,7 @@ public class ServiceAutor extends DAOAutor {
         try {
             List<Autor> lista = listarAutor();
             if (lista == null) {
-                System.out.println("NO SE HA INGRESADOS NINGUN AUTOR");
+                System.out.println("No se ha ingresado ningun Autor");
                 return false;
             } else {
                 for (Autor aux : lista) {
@@ -105,7 +105,7 @@ public class ServiceAutor extends DAOAutor {
     public void searchByNameAutor() {
         try {
             aut = new Autor();
-            System.out.println("INGRESE EL NOMBRE");
+            System.out.println("Ingrese el Nombre de el Autor");
             aut.setNombre(sc.next());
             buscarAutorPorNombre(aut);
         } catch (Exception e) {
@@ -116,7 +116,7 @@ public class ServiceAutor extends DAOAutor {
     public void searchByIdAutor() {
         try {
             aut = new Autor();
-            System.out.println("INGRESE EL ID_AUTOR");
+            System.out.println("Ingrese el Id del Autor");
             aut.setId(sc.nextLong());
             buscarAutorPorId(aut);
         } catch (Exception e) {

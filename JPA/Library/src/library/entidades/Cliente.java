@@ -1,11 +1,9 @@
-package library.entidades;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package library.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -23,22 +21,14 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private Long documento;
-    private Boolean alta;
+    private Long id;
+    private Long dni;
     private String nombre;
     private String apellido;
+    private Boolean alta;
     private String telefono;
 
     public Cliente() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Boolean getAlta() {
@@ -49,12 +39,12 @@ public class Cliente implements Serializable {
         this.alta = alta;
     }
 
-    public Long getDocumento() {
-        return documento;
+    public Long getDni() {
+        return dni;
     }
 
-    public void setDocumento(Long documento) {
-        this.documento = documento;
+    public void setDni(Long dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -81,6 +71,14 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,11 +101,10 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", documento=" + documento + ", alta=" + alta + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + '}';
+        return "Cliente{" + " Id: " + id + ", Dni: " + dni + ", Nombre: " + nombre 
+                + ", Apellido: " + apellido + ", Alta: " + alta + ", Telefono=" + telefono + '}';
     }
 
     
 
- 
-    
 }

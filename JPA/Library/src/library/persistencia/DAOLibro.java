@@ -13,7 +13,7 @@ import library.entidades.Libro;
  * @author tomyv
  */
 public class DAOLibro extends DAO {
-    
+
     public void crearLibro(Libro l) throws Exception {
         try {
             if (l.getAutor() == null) {
@@ -27,7 +27,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public boolean verificarISBN(Libro l) {
         try {
             conectar();
@@ -41,7 +41,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public boolean verificarTitulo(Libro l) {
         try {
             conectar();
@@ -57,7 +57,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public void bajarLibro(Libro l) {
         try {
             conectar();
@@ -75,7 +75,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public void subirLibro(Libro l) {
         try {
             conectar();
@@ -93,7 +93,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public void editeLibro(Libro l, Integer o) {
         try {
             conectar();
@@ -113,7 +113,7 @@ public class DAOLibro extends DAO {
                         lib.setEjemplaresRestantes(lib.getEjemplares() - lib.getEjemplaresPrestados());
                         break;
                     case 4:
-                        lib.setEjemplaresPrestados(l.getEjemplaresPrestados());                     
+                        lib.setEjemplaresPrestados(l.getEjemplaresPrestados());
                         lib.setEjemplaresRestantes(lib.getEjemplares() - lib.getEjemplaresPrestados());
                         break;
                     case 5:
@@ -126,13 +126,17 @@ public class DAOLibro extends DAO {
                 editar(lib);
                 System.out.println("Libro Editado Existosamente");
             }
-            
+
         } catch (Exception e) {
             throw e;
         }
     }
+
+    public void upload(Libro l){
+         editar(l);
+    }
     
-    public void buscarLibro(Libro l) {
+    public Libro buscarLibro(Libro l) {
         try {
             conectar();
             Libro lib = em.find(Libro.class, l.getId());
@@ -141,11 +145,12 @@ public class DAOLibro extends DAO {
             } else {
                 System.out.println(lib.toString());
             }
+            return lib;
         } catch (Exception e) {
             throw e;
         }
     }
-    
+
     public void listarLibros() {
         try {
             conectar();
@@ -162,7 +167,7 @@ public class DAOLibro extends DAO {
             throw e;
         }
     }
-    
+
     public void buscarLibroPorNombre(Libro l) {
         try {
             conectar();
@@ -177,13 +182,12 @@ public class DAOLibro extends DAO {
             throw ex;
         }
     }
-    
-    
-     public boolean buscarLibroPorId(Libro l) {
+
+    public boolean buscarLibroPorId(Libro l) {
         try {
             conectar();
             String query = "SELECT l FROM Libro l WHERE l.id LIKE :id";
-            List<Libro> x =  em.createQuery(query).setParameter("id", l.getId()).getResultList();
+            List<Libro> x = em.createQuery(query).setParameter("id", l.getId()).getResultList();
             if (x.isEmpty()) {
                 System.out.println("El Libro no se encuentra en la base de datos");
                 return false;
@@ -195,5 +199,5 @@ public class DAOLibro extends DAO {
             throw ex;
         }
     }
-    
+
 }

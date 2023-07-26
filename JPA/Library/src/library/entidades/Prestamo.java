@@ -1,11 +1,9 @@
-package library.entidades;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package library.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,27 +20,48 @@ import javax.persistence.TemporalType;
  * @author tomyv
  */
 @Entity
-public class Prestamos implements Serializable {
+public class Prestamo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Temporal(TemporalType.DATE)
-    private Date fecha_prestamo;
+    private Date fechaPrestamo;
     @Temporal(TemporalType.DATE)
-    private Date fecha_devolucion;
-    @ManyToOne
+    private Date fechaDevolucion;    
+    @OneToOne
     private Libro libro;
-    @ManyToOne
+    @OneToOne
     private Cliente cliente;
+    private Boolean alta;
 
-    public Integer getId() {
-        return id;
+    public Prestamo() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
+    }
+
+
+    public Date getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(Date fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public Date getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
     }
 
     public Libro getLibro() {
@@ -53,28 +72,19 @@ public class Prestamos implements Serializable {
         this.libro = libro;
     }
 
-    public Date getFecha_prestamo() {
-        return fecha_prestamo;
-    }
-
-    public void setFecha_prestamo(Date fecha_prestamo) {
-        this.fecha_prestamo = fecha_prestamo;
-    }
-
-    public Date getFecha_devolucion() {
-        return fecha_devolucion;
-    }
-
-    public void setFecha_devolucion(Date fecha_devolucion) {
-        this.fecha_devolucion = fecha_devolucion;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -87,10 +97,10 @@ public class Prestamos implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Prestamos)) {
+        if (!(object instanceof Prestamo)) {
             return false;
         }
-        Prestamos other = (Prestamos) object;
+        Prestamo other = (Prestamo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -99,9 +109,11 @@ public class Prestamos implements Serializable {
 
     @Override
     public String toString() {
-        return "Prestamos{" + " Id: " + id + ", Fecha Prestamo: " + fecha_prestamo 
-                + ", Fecha Devolucion: " + fecha_devolucion + ", Cliente: " + cliente + '}';
+        return "Prestamo{" + " Id:" + id + ", FechaPrestamo: " + fechaPrestamo 
+                + ", FechaDevolucion=" + fechaDevolucion + ", Libro=" + libro 
+                + ", Cliente=" + cliente + ", Alta=" + alta + '}';
     }
 
+    
     
 }
